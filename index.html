@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Boxes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+      background-color: #f2f2f2;
+    }
+    .box {
+      width: 300px;
+      height: 100px;
+      background-color: #ffffff;
+      border: 2px solid #007BFF;
+      border-radius: 8px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      padding: 10px;
+    }
+    .box.expanded {
+      height: 220px;
+    }
+    .options {
+      display: none;
+      margin-top: 20px;
+    }
+    .box.expanded .options {
+      display: block;
+    }
+    .label {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" onclick="toggleBox(this)">
+    <div class="title">Box 1</div>
+    <div class="options">
+      <div class="label">Color:</div>
+      <select>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
+      </select>
+      <div class="label">Size:</div>
+      <select>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="box" onclick="toggleBox(this)">
+    <div class="title">Box 2</div>
+    <div class="options">
+      <div class="label">Color:</div>
+      <select>
+        <option>Yellow</option>
+        <option>Purple</option>
+        <option>Black</option>
+      </select>
+      <div class="label">Size:</div>
+      <select>
+        <option>XS</option>
+        <option>S</option>
+        <option>M</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="box" onclick="toggleBox(this)">
+    <div class="title">Box 3</div>
+    <div class="options">
+      <div class="label">Color:</div>
+      <select>
+        <option>Orange</option>
+        <option>Pink</option>
+        <option>Gray</option>
+      </select>
+      <div class="label">Size:</div>
+      <select>
+        <option>XL</option>
+        <option>XXL</option>
+        <option>XXXL</option>
+      </select>
+    </div>
+  </div>
+
+  <script>
+    function toggleBox(el) {
+      const allBoxes = document.querySelectorAll('.box');
+      allBoxes.forEach(box => {
+        if (box !== el) box.classList.remove('expanded');
+      });
+      el.classList.toggle('expanded');
+    }
+  </script>
+</body>
+</html>
